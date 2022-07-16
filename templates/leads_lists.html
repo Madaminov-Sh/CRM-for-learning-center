@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} Mijozlar {% endblock title %}</title>
+     <link rel="stylesheet" href={% block file %} "{% static 'css/style.css' %}" {% endblock file %}>
+</head>
+<body>
+
+{% block content %}
+    <h2>Bizning mijozlar</h2>
+
+    <!--user organisor bolsa, ushbu tugma ko'rsatilsin-->
+    {% if request.user.is_organisor %}
+     <button><a href="{% url 'leads:lead-create'%}">Yangi mijoz qoshish</a></button>
+    {% endif %}
+    <!--comment finished-->
+
+    {% for lead in leads %}
+    <div class="mijoz"><a href="/{{lead.pk}}/detail">{{lead.familiasi}}</a></div>
+    {% endfor %}
+
+
+{% if unassigned_leads.exists %}
+    <h2>Agent tayinlanmagan</h2>
+
+    {% for lead in unassigned_leads %}
+    <div class="mijoz"><a href="{% url 'leads:agent-to-lead' lead.pk %}">{{lead.familiasi}}</a></div>
+    {% endfor %}
+{% endif %}
+{% endblock  %}
+</body>
+</html>

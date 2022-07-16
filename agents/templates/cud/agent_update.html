@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Agent / yangilash{% endblock title %}</title>
+    <link rel="stylesheet" href={% block file %} "{% static 'css/lead_details.css' %}" {% endblock file %}>
+</head>
+<body>
+{% block content %}
+
+<div class="lead-detail">
+    <div class="detail-text">
+        <h1>Agent malumotlarini yangilash</h1> <br>
+
+        <br><br>
+        <div class="btn">
+            <div class="btn-orqaga">
+            <form method="post">
+            {% csrf_token %} {{ form.as_p }}
+            <button type="submit">Saqlash</button>
+            </form>
+            <button><a href="{% url 'agents:agent-detail' agent.pk %}">Ortga qaytish</a><button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+</body>
+</html>

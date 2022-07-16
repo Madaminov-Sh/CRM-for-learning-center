@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mijoz malumotlari{% endblock title %}</title>
+    <link rel="stylesheet" href={% block file %} "{% static 'css/lead_details.css' %}" {% endblock file %}>
+    
+</head>
+<body>
+{% block content %}
+
+<div class="lead-detail">
+    <div class="detail-text">
+        <h1>Agent haqida malumot</h1> <br>
+
+        <h3>Ismi : {{agent.user.first_name}}</h3>
+        <h3>Familiasi : {{agent.user.last_name}}</h3>
+        <h3>Email : {{agent.user.email}}</h3>
+        <h3>Username : {{agent.user.username}}</h3>
+
+        <div class="btn">
+            <div class="btn-orqaga">
+                <button><a href="{% url 'agents:agent-delete' agent.pk %}">O'chirish</a><button>
+                <button><a href="{% url 'agents:agent-update' agent.pk %}">O'zgartirish</a><button>
+                <button><a href="/agents">Ortga qaytish</a><button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

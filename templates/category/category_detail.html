@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{category.nomi}} {% endblock title %}</title>
+     <link rel="stylesheet" href={% block file %} "{% static 'css/style.css' %}" {% endblock file %}>
+</head>
+<body>
+{% block content %}
+<section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-col text-center w-full mb-20">
+      <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray-900">{{ category.nomi }}</h1>
+      <p class="lg:w-2/3 mx-auto leading-relaxed text-base">{{ category.nomi }} kursi o'quvchilari</p>
+    </div>
+    <div class="lg:w-2/3 w-full mx-auto overflow-auto">
+      <table class="table-auto w-full text-left whitespace-no-wrap">
+        <thead>
+          <tr>
+            <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">O'quvchilar</th>
+        </thead>
+        <tbody>
+          {% for lead in category.leads.all %}
+            <tr>
+                <td class="px-4 py-3"><a href="{% url 'leads:detail' category.pk %}">{{ lead.familiasi }}</a></td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+      <button><a href="{% url 'leads:category-list'%}">Ortga qaytish</a><button>
+    </div>
+    <div class="flex pl-4 mt-4 lg:w-2/3 w-full mx-auto">
+    </div>
+  </div>
+</section>
+{% endblock  %}
+</body>
+</html>

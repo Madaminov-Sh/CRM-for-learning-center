@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Yangi mijoz{% endblock title %}</title>
+     <link rel="stylesheet" href={% block file %} "{% static 'css/lead_create.css' %}" {% endblock file %}>
+    
+  </head>
+  <body>
+  
+  {% block content %}
+    <div class="home">
+      <div class="form">
+        <div class="form-content">
+          <h2>Yangi mijoz malumotlarini kiriting</h2>
+          <form method="post">
+            {% csrf_token %} {{form.as_p}}
+            <button type="submit">Saqlash</button>
+          </form>
+            <a href="{% url 'leads:lead-list'%}"><button>Orqaga</button></a>
+        </div>
+      </div>
+    </div>
+  {% endblock content %}
+
+  </body>
+</html>

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijoz malumotlari</title>
+    <title>{% block title %}Mijoz malumotlari{% endblock title %}</title>
+
+    <link rel="stylesheet" href={% block file %} "{% static 'css/lead_details.css' %}" {% endblock file %}>
+    
+</head>
+<body>
+{% block content %}
+
+<div class="lead-detail">
+    <div class="detail-text">
+        <h1>Mijoz haqida malumot</h1> <br>
+        
+        <h2>ismi: {{lead.ismi}}</h2>
+        <h2>familiasi: {{lead.familiasi}}</h2>
+        <h2>yoshi: {{lead.yoshi}}</h2>
+        <h2>agent: {{lead.agent}}</h2>
+        <h2>Kategoriya: {{lead.kategoriya}}</h2>
+        <br><br>
+        <div class="btn">
+            <div class="btn-orqaga">
+                <button><a href="{% url 'leads:delete' lead.pk%}">O'chirish</a><button>
+                <button><a href="{% url 'leads:update' lead.pk%}">O'zgartirish</a><button>
+                <button><a href="{% url 'leads:lead-category-update' lead.pk%}">O'quv kursini o'zgartirish</a><button>
+                <button><a href="{% url 'leads:lead-list'%}">Ortga qaytish</a><button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+</body>
+</html>

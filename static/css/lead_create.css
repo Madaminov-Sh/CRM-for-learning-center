@@ -1,0 +1,39 @@
+.home {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.form {
+    width: 50%;
+    height: 350px;
+    box-shadow: 0 0 10px rgb(180, 180, 180);
+    justify-content: center;
+    display: flex;
+}
+
+.form h2 {
+    margin-top: 0;
+}
+
+.form-content {
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+}
+
+.form button {
+    margin-top: 20px;
+    width: 80px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: black;
+    color: aliceblue;
+    cursor: pointer;
+    margin-right: 40px;
+}
+
+
+.form button a {
+    color: white;
+}
